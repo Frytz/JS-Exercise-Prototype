@@ -39,8 +39,11 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-
+function Person(name, age) {
+console.log(name)
+console.log(age)
+this.name = name;
+this.age = age;
 }
 
 /*
