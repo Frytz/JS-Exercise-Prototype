@@ -77,24 +77,24 @@ Person.prototype.toString = function(){
 */
 
 function Car(model, milesPerGallon) {
-  this.model = model;
-  this.milesPerGallon = milesPerGallon;
+this.model = model;
+this.milesPerGallon = milesPerGallon;
 this.tank = 0;
 this.odometer = 0;
 }
 
 Car.prototype.fill = function(gallons){
-  this.tank += gallons;
+this.tank += gallons;
 };
 Car.prototype.drive = function(distance) {
-  if (this.tank * this.milesPerGallon <= distance) {
-    this.odometer += this.tank * this.milesPerGallon;
-    this.tank = 0;
-    return `I ran out of fuel at ${this.odometer}!`;
-  } else {
-    this.odometer += distance;
-    this.tank = distance / this.milesPerGallon;
-  }
+if (this.tank * this.milesPerGallon <= distance) {
+  this.odometer += this.tank * this.milesPerGallon;
+  this.tank = 0;
+  return `I ran out of fuel at ${this.odometer}!`;
+} else {
+  this.odometer += distance;
+  this.tank = distance / this.milesPerGallon;
+}
 };
 
 /*
@@ -104,18 +104,23 @@ Car.prototype.drive = function(distance) {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
-
+function Baby(name, age, favoriteToy) {
+ Person.call (this, name, age);
+ this.favoriteToy = favoriteToy;
+  
 }
-
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function(){
+return  `Playing with ${this.favoriteToy}`;
+};
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Implicit Binding - invoked to the left of the dot- most common rule- used 80% of the time == this.example
+  2. Explicit binding- .call - passes in arguements, .apply - passes in an array of arguements, .bind- creates a new function we can call later
+  3. New Binding- bind a new this = {} object
+  4. Window binding-binds a this. to the window
 */
 
 
